@@ -54,7 +54,7 @@ export default async function CarPage({ params }: Props) {
       </section>
 
       <section className="detail wrap">
-        <Gallery photos={car.photos} alt={name} />
+        <Gallery cutout={car.cutout} photos={car.photos} alt={name} />
         <aside className="buybox glass glass--liquid">
           <span className="eyebrow">{car.brand}</span>
           <h1>{car.model}</h1>

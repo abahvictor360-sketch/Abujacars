@@ -1876,6 +1876,47 @@ button {
   object-fit: cover;
   animation: fade 0.5s both;
 }
+.gallery__main--studio {
+  background:
+    radial-gradient(60% 34% at 50% 84%, rgba(227, 18, 43, 0.35), transparent 70%),
+    radial-gradient(70% 60% at 50% 20%, rgba(255, 255, 255, 0.10), transparent 70%),
+    linear-gradient(180deg, #232328 0%, #141417 62%, #0c0c0e 100%);
+}
+.gallery__main--studio::after {
+  /* floor line + soft reflection plane */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 26%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 40%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.studio__car {
+  position: absolute;
+  inset: 10% 6% 12%;
+  z-index: 1;
+  filter: drop-shadow(0 26px 22px rgba(0, 0, 0, 0.75));
+  animation: studioIn 0.8s var(--ease) both;
+}
+.studio__car img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+@keyframes studioIn {
+  from {
+    opacity: 0;
+    transform: translateX(-6%) scale(0.96);
+  }
+}
+.gallery__thumbs .thumb--studio {
+  background: linear-gradient(180deg, #2a2a2f, #121214);
+}
+.gallery__thumbs .thumb--studio img {
+  object-fit: contain;
+  padding: 6px;
+}
 .gallery__thumbs {
   display: flex;
   gap: 10px;
