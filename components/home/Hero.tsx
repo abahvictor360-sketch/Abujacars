@@ -10,6 +10,10 @@ const features = [
   { n: "05", icon: "papers", label: "Verified Papers" },
 ] as const;
 
+// The dial is a loop: extra segments either side keep it full while scrolling
+// turns it one complete cycle (03 → 04 → 05 → 01 → 02 → 03).
+const ring = Array.from({ length: 14 }, (_, i) => i - 4);
+
 /**
  * "Scroll world" hero: the section is taller than the viewport and its stage
  * is sticky, so scrolling drives `--p` (0 → 1) which rotates the car, sweeps
@@ -57,13 +61,16 @@ export default function Hero() {
 
         <div className="dial" aria-label="Why Abujacars">
           <div className="dial__ring">
-            {features.map((f, i) => (
-              <div key={f.n} className="dial__seg" style={{ ["--k" as string]: i - 2 }}>
-                <span className="dial__num">{f.n}</span>
-                <FeatureIcon name={f.icon} />
-                <span className="dial__label">{f.label}</span>
-              </div>
-            ))}
+            {ring.map((k) => {
+              const f = features[(((k + 2) % 5) + 5) % 5];
+              return (
+                <div key={k} className="dial__seg" style={{ ["--k" as string]: k }} aria-hidden={k < -2 || k > 2}>
+                  <span className="dial__num">{f.n}</span>
+                  <FeatureIcon name={f.icon} />
+                  <span className="dial__label">{f.label}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
 

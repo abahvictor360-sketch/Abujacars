@@ -506,7 +506,7 @@ button {
    ========================================================= */
 .hero {
   --p: 0;
-  height: 230vh;
+  height: 200vh;
   position: relative;
 }
 .hero__stage {
@@ -644,12 +644,12 @@ button {
 .hero__copy {
   position: absolute;
   left: 50%;
-  top: calc(var(--edge) - 15.5svh);
+  top: calc(var(--edge) - 150px);
   width: min(560px, 100% - 32px);
-  transform: translate(-50%, calc(var(--p) * 18svh));
+  transform: translate(-50%, calc(var(--p) * -12svh));
   text-align: center;
   z-index: 5;
-  opacity: calc(1 - var(--p) * 2.2);
+  opacity: calc(1 - var(--p) * 3.5);
 }
 .hero__copy h2 {
   font-family: var(--f-display);
@@ -702,7 +702,7 @@ button {
 .dial__ring {
   position: absolute;
   inset: 0;
-  transform: rotate(calc(var(--p) * 30deg));
+  transform: rotate(calc(var(--p) * 62.5deg));
 }
 .dial__seg {
   --w: clamp(150px, 15vw, 230px);
@@ -821,10 +821,25 @@ button {
   }
 }
 
-@media (max-width: 700px) {
-  .hero {
-    height: 200vh;
+/* short screens (landscape tablets, small laptops): tighter stack so the
+   headline never meets the dial markers */
+@media (max-height: 760px) and (min-width: 701px) {
+  .hero__title {
+    font-size: min(9.6vw, 16svh, 150px);
   }
+  .hero__car {
+    top: 31svh;
+    height: min(60vw, 40svh);
+  }
+  .hero__copy {
+    top: calc(var(--edge) - 100px);
+  }
+  .hero__copy p {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
   .hero__stage {
     --R: 560px;
     --band: 120px;
