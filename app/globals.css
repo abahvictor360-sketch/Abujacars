@@ -30,6 +30,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* decorative glows are wider than the screen; never let them widen the page */
+  overflow-x: clip;
 }
 
 body {
